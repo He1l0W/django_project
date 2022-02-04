@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block con %}
+
+<div class="container mt-5 mb-5">
+    <h1>{{user}}'s BOOKMARK PAGE</h1>
+    <div class="text-end">
+        <a href="{% url 'book:create' %}"><button class="btn btn-success">CREATE</button></a>
+    </div>
+    <div class="row">
+    {% for i in blist %}
+        <div class="col-lg-4">
+        
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">{{i.site_name}}</h5>
+                    <p class="card-text">{{i.content}}</p>
+                    <a href="{{i.site_url}}" class="btn btn-outline-primary">GO SITE</a>
+                </div>
+                <div class="card-footer text-muted" {% if i.impo %} style="background-color: black; "{% else %} style="background-color: rgb(255, 174, 0)" {% endif %}>
+                    {{ i.pubdate |date:'Y-m-d H:i' }}
+                  </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+  
+{% endblock %}
